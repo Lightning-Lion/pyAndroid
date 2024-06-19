@@ -28,11 +28,11 @@ public class denglu extends AppCompatActivity {
 
 
                 if ("qwert".equals(username) && "123456".equals(password)) {
-                    // 登录成功，跳转到下一个界面
+                    // 登录成功，跳转
                     Intent intent = new Intent(denglu.this, Main.class);
                     startActivity(intent);
                 } else {
-                    // 登录失败，显示错误提示
+                    // 登录失败
                     Toast.makeText(denglu.this, "请输入正确的账号密码", Toast.LENGTH_SHORT).show();
                 }
             }

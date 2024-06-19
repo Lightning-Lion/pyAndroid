@@ -39,9 +39,11 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
         holder.noteTitleTextView.setText(note.getTitle());
 
         holder.itemViewButton.setOnClickListener(v -> {
+
             Intent intent = new Intent(context, Note_main.class);
             intent.putExtra("noteId", note.getId());
             context.startActivity(intent);
+            //跳转笔记内容
         });
 
         holder.renameButton.setOnClickListener(v -> showRenameDialog(note));

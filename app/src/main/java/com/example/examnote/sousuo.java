@@ -23,7 +23,7 @@ import java.util.Calendar;
 public class sousuo extends AppCompatActivity {
 
     Button doSearchButton;
-    Button xzeRiqi;
+    Button xzDate;
     EditText queryField;
     TextView sousuoRiqiXianshi;
     RecyclerView notesRecyclerView;
@@ -44,13 +44,13 @@ public class sousuo extends AppCompatActivity {
         doSearchButton = findViewById(R.id.doSearch);
         queryField = findViewById(R.id.query);
         sousuoRiqiXianshi = findViewById(R.id.sousuoRiqiXianshi);
-        xzeRiqi = findViewById(R.id.xzeRiqi);
+        xzDate = findViewById(R.id.xzeRiqi);
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager((this)));
         notesLiebiao = new Notes_liebiao(this, viewModel);
         notesRecyclerView.setAdapter(notesLiebiao);
         doSearchButton.setOnClickListener(v -> searchNotes());
-        xzeRiqi.setOnClickListener(v -> showDatePickerDialog());
+        xzDate.setOnClickListener(v -> showDatePickerDialog());
     }
 
 
