@@ -37,8 +37,8 @@ public class Main_liebiao extends RecyclerView.Adapter<Main_liebiao.FolderViewHo
         holder.folderNameTextView.setText(folder.getName());
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, NotesActivity.class);
-            intent.putExtra("folderId", folder.getId());
+            Intent intent = new Intent(context, Notes_ye.class);
+            intent.putExtra("folderSuoyin", folder.getId());
             context.startActivity(intent);
         });
 

@@ -11,34 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class NotesActivity extends AppCompatActivity {
+public class Notes_ye extends AppCompatActivity {
     private NotesViewModel notesViewModel;
-    private NotesAdapter notesAdapter;
+    private Notes_liebiao notesLiebiao;
     private int folderId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
-
-        folderId = getIntent().getIntExtra("folderId", -1);
+//a
+        folderId = getIntent().getIntExtra("folderSuoyin", -1);
 
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
 
         Button addNoteButton = findViewById(R.id.addNoteButton);
         addNoteButton.setOnClickListener(v -> {
-            notesViewModel.insertNote("New Note", "Note content", folderId);
+            notesViewModel.insertNote("新笔记", "笔记内容", folderId);
         });
 
         RecyclerView notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        notesAdapter = new NotesAdapter(this, notesViewModel);
-        notesRecyclerView.setAdapter(notesAdapter);
+        notesLiebiao = new Notes_liebiao(this, notesViewModel);
+        notesRecyclerView.setAdapter(notesLiebiao);
 
         notesViewModel.getNotesByFolder(folderId).observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(List<Note> notes) {
-                notesAdapter.setNotes(notes);
+                notesLiebiao.setNotes(notes);
             }
         });
     }

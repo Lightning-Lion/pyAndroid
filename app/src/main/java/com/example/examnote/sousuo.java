@@ -32,7 +32,7 @@ public class sousuo extends AppCompatActivity {
 
     private NotesViewModel viewModel;
 
-    private NotesAdapter notesAdapter;
+    private Notes_liebiao notesLiebiao;
 
     private Calendar calendar = Calendar.getInstance();
 
@@ -47,8 +47,8 @@ public class sousuo extends AppCompatActivity {
         xzeRiqi = findViewById(R.id.xzeRiqi);
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager((this)));
-        notesAdapter = new NotesAdapter(this, viewModel);
-        notesRecyclerView.setAdapter(notesAdapter);
+        notesLiebiao = new Notes_liebiao(this, viewModel);
+        notesRecyclerView.setAdapter(notesLiebiao);
         doSearchButton.setOnClickListener(v -> searchNotes());
         xzeRiqi.setOnClickListener(v -> showDatePickerDialog());
     }
@@ -67,7 +67,7 @@ public class sousuo extends AppCompatActivity {
                 public void onChanged(List<Note> note) {
 
                     System.out.println("返回了几条笔记"+ note.size());
-                    notesAdapter.setNotes(note);
+                    notesLiebiao.setNotes(note);
                 }
             });
         }

@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".sousuo" />
-        <activity android:name=".NotesActivity" />
+        <activity android:name=".Notes_ye" />
         <activity android:name=".Note_main" />
         <activity
             android:name=".Main"

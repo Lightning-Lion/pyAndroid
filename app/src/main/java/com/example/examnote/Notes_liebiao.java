@@ -14,12 +14,13 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
+public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHolder> {
     private List<Note> notes = new ArrayList<>();
     private Context context;
+    //a
     private NotesViewModel notesViewModel;
 
-    public NotesAdapter(Context context, NotesViewModel notesViewModel) {
+    public Notes_liebiao(Context context, NotesViewModel notesViewModel) {
         this.context = context;
         this.notesViewModel = notesViewModel;
     }
