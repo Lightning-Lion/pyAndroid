@@ -14,7 +14,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
 public class Note_main extends AppCompatActivity {
-    private NotesViewModel notesViewModel;
+    private NotesSQL4 notesSQL4;
     private EditText titleEditText;
     private EditText location;
     private EditText contentEditText;
@@ -32,7 +32,7 @@ public class Note_main extends AppCompatActivity {
         setContentView(R.layout.activity_note_edit);
 
         noteId = getIntent().getIntExtra("noteId", -1);
-        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+        notesSQL4 = new ViewModelProvider(this).get(NotesSQL4.class);
 
         titleEditText = findViewById(R.id.titleEditText);
         riqiXianshi = findViewById(R.id.riqiXianshi);
@@ -40,7 +40,7 @@ public class Note_main extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         location = findViewById(R.id.location);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        notesViewModel.getNoteById(noteId).observe(this, note -> {
+        notesSQL4.getNoteById(noteId).observe(this, note -> {
             if (note != null) {
                 this.note = note;
 
@@ -64,7 +64,7 @@ public class Note_main extends AppCompatActivity {
         note.setTitle(titleEditText.getText().toString());
         note.setContent(contentEditText.getText().toString());
         note.setLocation(location.getText().toString());
-        notesViewModel.updateNote(note);
+        notesSQL4.updateNote(note);
         finish();
     }
 

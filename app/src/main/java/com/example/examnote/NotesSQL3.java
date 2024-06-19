@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class NotesRepository {
+public class NotesSQL3 {
     private Folder_jiekou folderJiekou;
     private Note_jiekou noteJiekou;
     private ExecutorService executorService;
 
-    public NotesRepository(Application application) {
+    public NotesSQL3(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
         folderJiekou = database.folderDao();
         noteJiekou = database.noteDao();

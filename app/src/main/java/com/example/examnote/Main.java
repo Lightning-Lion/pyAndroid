@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class Main extends AppCompatActivity {
-    private NotesViewModel notesViewModel;
+    private NotesSQL4 notesSQL4;
     private Main_liebiao mainliebiao;
 
     private Button jumpToSearchPage;
@@ -23,19 +23,19 @@ public class Main extends AppCompatActivity {
 
         jumpToSearchPage = findViewById(R.id.jumpToSearchPage);
         jumpToSearchPage.setOnClickListener(v -> openSearchPage());
-        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+        notesSQL4 = new ViewModelProvider(this).get(NotesSQL4.class);
 
         Button addFolderButton = findViewById(R.id.addFolderButton);
         addFolderButton.setOnClickListener(v -> {
-            notesViewModel.insertFolder("新的文件夹");
+            notesSQL4.insertFolder("新的文件夹");
         });
 
         RecyclerView foldersRecyclerView = findViewById(R.id.foldersRecyclerView);
         foldersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mainliebiao = new Main_liebiao(this, notesViewModel); // 传递Context和NotesViewModel
+        mainliebiao = new Main_liebiao(this, notesSQL4); // 传递Context和NotesViewModel
         foldersRecyclerView.setAdapter(mainliebiao);
 
-        notesViewModel.getAllFolders().observe(this, new Observer<List<Folder>>() {
+        notesSQL4.getAllFolders().observe(this, new Observer<List<Folder>>() {
             @Override
             public void onChanged(List<Folder> folders) {
                 mainliebiao.setFolders(folders);

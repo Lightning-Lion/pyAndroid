@@ -30,7 +30,7 @@ public class sousuo extends AppCompatActivity {
 
     long miao = -365*24*3600*1000;
 
-    private NotesViewModel viewModel;
+    private NotesSQL4 viewModel;
 
     private Notes_liebiao notesLiebiao;
 
@@ -40,7 +40,7 @@ public class sousuo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sousuo);
-        viewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+        viewModel = new ViewModelProvider(this).get(NotesSQL4.class);
         doSearchButton = findViewById(R.id.doSearch);
         queryField = findViewById(R.id.query);
         sousuoRiqiXianshi = findViewById(R.id.sousuoRiqiXianshi);

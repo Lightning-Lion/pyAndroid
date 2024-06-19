@@ -18,11 +18,11 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
     private List<Note> notes = new ArrayList<>();
     private Context context;
     //a
-    private NotesViewModel notesViewModel;
+    private NotesSQL4 notesSQL4;
 
-    public Notes_liebiao(Context context, NotesViewModel notesViewModel) {
+    public Notes_liebiao(Context context, NotesSQL4 notesSQL4) {
         this.context = context;
-        this.notesViewModel = notesViewModel;
+        this.notesSQL4 = notesSQL4;
     }
 
     @NonNull
@@ -60,7 +60,7 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
             String newTitle = input.getText().toString();
             if (!newTitle.isEmpty()) {
                 note.setTitle(newTitle);
-                notesViewModel.updateNote(note);
+                notesSQL4.updateNote(note);
                 notifyDataSetChanged();
             }
         });
@@ -74,7 +74,7 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
         builder.setTitle("Delete Note");
         builder.setMessage("Are you sure you want to delete this note?");
         builder.setPositiveButton("Yes", (dialog, which) -> {
-            notesViewModel.deleteNote(note);
+            notesSQL4.deleteNote(note);
             notifyDataSetChanged();
         });
         builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());

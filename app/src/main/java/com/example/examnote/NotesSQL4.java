@@ -6,14 +6,14 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import java.util.List;
 
-public class NotesViewModel extends AndroidViewModel {
-    private NotesRepository repository;
+public class NotesSQL4 extends AndroidViewModel {
+    private NotesSQL3 repository;
     private LiveData<List<Folder>> allFolders;
     private LiveData<List<Note>> notesByFolder;
 
-    public NotesViewModel(@NonNull Application application) {
+    public NotesSQL4(@NonNull Application application) {
         super(application);
-        repository = new NotesRepository(application);
+        repository = new NotesSQL3(application);
         allFolders = repository.getAllFolders();
     }
 

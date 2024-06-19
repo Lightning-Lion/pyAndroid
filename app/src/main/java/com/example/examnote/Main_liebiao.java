@@ -16,11 +16,11 @@ import java.util.List;
 public class Main_liebiao extends RecyclerView.Adapter<Main_liebiao.FolderViewHolder> {
     private List<Folder> folders = new ArrayList<>();
     private Context context;
-    private NotesViewModel notesViewModel;
+    private NotesSQL4 notesSQL4;
 
-    public Main_liebiao(Context context, NotesViewModel notesViewModel) {
+    public Main_liebiao(Context context, NotesSQL4 notesSQL4) {
         this.context = context;
-        this.notesViewModel = notesViewModel;
+        this.notesSQL4 = notesSQL4;
     }
 
     @NonNull
@@ -59,7 +59,7 @@ public class Main_liebiao extends RecyclerView.Adapter<Main_liebiao.FolderViewHo
             String newName = input.getText().toString();
             if (!newName.isEmpty()) {
                 folder.setName(newName);
-                notesViewModel.updateFolder(folder);
+                notesSQL4.updateFolder(folder);
                 notifyDataSetChanged();
             }
         });
@@ -73,7 +73,7 @@ public class Main_liebiao extends RecyclerView.Adapter<Main_liebiao.FolderViewHo
         builder.setTitle("删除文件夹");
         builder.setMessage("确认要删除文件夹吗?");
         builder.setPositiveButton("确定", (dialog, which) -> {
-            notesViewModel.deleteFolder(folder);
+            notesSQL4.deleteFolder(folder);
             notifyDataSetChanged();
         });
         builder.setNegativeButton("取消", (dialog, which) -> dialog.cancel());
