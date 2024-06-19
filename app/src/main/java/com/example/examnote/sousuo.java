@@ -50,30 +50,26 @@ public class sousuo extends AppCompatActivity {
         notesLiebiao = new Notes_liebiao(this, viewModel);
         notesRecyclerView.setAdapter(notesLiebiao);
         doSearchButton.setOnClickListener(v -> searchNotes());
-        xzDate.setOnClickListener(v -> showDatePickerDialog());
+        xzDate.setOnClickListener(v -> Date_xuanze());
     }
 
 
     private void searchNotes() {
-        System.out.println("点击搜索按钮");
         String queryWord = queryField.getText().toString();
         if (queryWord.isEmpty()) {
             Toast.makeText(this, "请输入搜索关键词", Toast.LENGTH_SHORT).show();
         } else {
-            System.out.println("查数据库："+queryWord);
             viewModel.searchNotes(queryWord,miao).observe(this, new Observer<List<Note>>() {
 
                 @Override
                 public void onChanged(List<Note> note) {
-
-                    System.out.println("返回了几条笔记"+ note.size());
                     notesLiebiao.setNotes(note);
                 }
             });
         }
     }
 
-    private void showDatePickerDialog() {
+    private void Date_xuanze() {
         // 获取当前日期
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -92,7 +88,7 @@ public class sousuo extends AppCompatActivity {
                         calendar.set(year, month, dayOfMonth);
 
                         // 显示时间选择对话框
-                        showTimePickerDialog();
+                        Time_xuanze();
                     }
                 },
                 year,
@@ -102,7 +98,7 @@ public class sousuo extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void showTimePickerDialog() {
+    private void Time_xuanze() {
         // 获取当前时间
         final Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
