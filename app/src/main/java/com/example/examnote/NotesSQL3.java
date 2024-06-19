@@ -9,7 +9,12 @@ import java.util.concurrent.Executors;
 public class NotesSQL3 {
     private Folder_jiekou folderJiekou;
     private Note_jiekou noteJiekou;
+
+
+
+
     private ExecutorService executorService;
+    //调用以执行SQL语句
 
     public NotesSQL3(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
@@ -46,6 +51,7 @@ public class NotesSQL3 {
         executorService.execute(() -> folderJiekou.deleteFolder(folder));
     }
     public LiveData<List<Note>> searchNotes(String query, long miao) {
+
         return noteJiekou.searchNotes(query,miao);
     }
     public void updateNote(Note note) {
