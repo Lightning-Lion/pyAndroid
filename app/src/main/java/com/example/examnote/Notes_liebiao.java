@@ -17,7 +17,7 @@ import java.util.List;
 public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHolder> {
     private List<Note> notes = new ArrayList<>();
     private Context context;
-    //a
+
     private NotesSQL4 notesSQL4;
 
     public Notes_liebiao(Context context, NotesSQL4 notesSQL4) {
@@ -43,7 +43,9 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
             Intent intent = new Intent(context, Note_main.class);
             intent.putExtra("noteId", note.getId());
             context.startActivity(intent);
+
             //跳转笔记内容
+
         });
 
         holder.renameButton.setOnClickListener(v -> showRenameDialog(note));
@@ -52,13 +54,13 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
 
     private void showRenameDialog(Note note) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Rename Note");
+        builder.setTitle("重命名");
 
         final EditText input = new EditText(context);
         input.setText(note.getTitle());
         builder.setView(input);
 
-        builder.setPositiveButton("OK", (dialog, which) -> {
+        builder.setPositiveButton("确定", (dialog, which) -> {
             String newTitle = input.getText().toString();
             if (!newTitle.isEmpty()) {
                 note.setTitle(newTitle);
@@ -66,20 +68,20 @@ public class Notes_liebiao extends RecyclerView.Adapter<Notes_liebiao.NoteViewHo
                 notifyDataSetChanged();
             }
         });
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton("取消", (dialog, which) -> dialog.cancel());
 
         builder.show();
     }
 
     private void showDeleteConfirmationDialog(Note note) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Delete Note");
-        builder.setMessage("Are you sure you want to delete this note?");
-        builder.setPositiveButton("Yes", (dialog, which) -> {
+        builder.setTitle("删除笔记");
+        builder.setMessage("确定要删除这个笔记吗?");
+        builder.setPositiveButton("确定", (dialog, which) -> {
             notesSQL4.deleteNote(note);
             notifyDataSetChanged();
         });
-        builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton("取消", (dialog, which) -> dialog.cancel());
 
         builder.show();
     }

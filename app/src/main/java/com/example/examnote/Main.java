@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity {
 
         RecyclerView foldersRecyclerView = findViewById(R.id.foldersRecyclerView);
         foldersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mainliebiao = new Main_liebiao(this, notesSQL4); // 传递Context和NotesViewModel
+        mainliebiao = new Main_liebiao(this, notesSQL4); // Main连接Main_liebiao
         foldersRecyclerView.setAdapter(mainliebiao);
 
         notesSQL4.getAllFolders().observe(this, new Observer<List<Folder>>() {

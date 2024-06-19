@@ -29,7 +29,7 @@ public class Main_liebiao extends RecyclerView.Adapter<Main_liebiao.FolderViewHo
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.folder_item, parent, false);
         return new FolderViewHolder(itemView);
-    }
+    }//设定每一行的视图
 
     @Override
     public void onBindViewHolder(@NonNull FolderViewHolder holder, int position) {
@@ -40,6 +40,9 @@ public class Main_liebiao extends RecyclerView.Adapter<Main_liebiao.FolderViewHo
             Intent intent = new Intent(context, Notes_ye.class);
             intent.putExtra("folderSuoyin", folder.getId());
             context.startActivity(intent);
+
+            //跳转到nate_ye
+
         });
 
         holder.renameButton.setOnClickListener(v -> showRenameDialog(folder));

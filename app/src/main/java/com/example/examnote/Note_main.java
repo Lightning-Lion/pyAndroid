@@ -15,9 +15,9 @@ import com.google.android.gms.location.LocationServices;
 
 public class Note_main extends AppCompatActivity {
     private NotesSQL4 notesSQL4;
-    private EditText titleEditText;
-    private EditText location;
-    private EditText contentEditText;
+    private EditText title;
+    private EditText dingwei;
+    private EditText neirong;
     private ImageView imageView;
 
     private TextView riqiXianshi;
@@ -34,19 +34,19 @@ public class Note_main extends AppCompatActivity {
         noteId = getIntent().getIntExtra("noteId", -1);
         notesSQL4 = new ViewModelProvider(this).get(NotesSQL4.class);
 
-        titleEditText = findViewById(R.id.titleEditText);
+        title = findViewById(R.id.titleEditText);
         riqiXianshi = findViewById(R.id.riqiXianshi);
-        contentEditText = findViewById(R.id.contentEditText);
+        neirong = findViewById(R.id.contentEditText);
         imageView = findViewById(R.id.imageView);
-        location = findViewById(R.id.location);
+        dingwei = findViewById(R.id.location);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         notesSQL4.getNoteById(noteId).observe(this, note -> {
             if (note != null) {
                 this.note = note;
 
-                titleEditText.setText(note.getTitle());
-                contentEditText.setText(note.getContent());
-                location.setText(note.getLocation());
+                title.setText(note.getTitle());
+                neirong.setText(note.getContent());
+                dingwei.setText(note.getLocation());
                 riqiXianshi.setText(Note.toChineseString(note.zhuanHuanDaoDate(note.getDate())));
                 if (note.getHaveImage()) {
                     imageView.setImageResource(R.drawable.tupian);
@@ -61,9 +61,9 @@ public class Note_main extends AppCompatActivity {
     }
 
     private void saveNote() {
-        note.setTitle(titleEditText.getText().toString());
-        note.setContent(contentEditText.getText().toString());
-        note.setLocation(location.getText().toString());
+        note.setTitle(title.getText().toString());
+        note.setContent(neirong.getText().toString());
+        note.setLocation(dingwei.getText().toString());
         notesSQL4.updateNote(note);
         finish();
     }
